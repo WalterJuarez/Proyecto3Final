@@ -10,22 +10,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Crear_Cliente</title>
+        <link href="css/estilo.css" rel="stylesheet"type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     </head>
     <body>
-        <h1 align="center">Formulario Creacion de Clientes</h1>
+        <h1 id="titulo" align="center"class="font-weight-bold">Formulario Creacion de Clientes</h1>
+        <div id="cuadro2">
         <form >
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputName">Nombre</label>
-                <input type="email" class="form-control" id="inputEmail4" name="Nombre"style="width : 600px; heigth : 600px">
-              </div>
-                <div class="form-group col-md-6">
-                  <label for="inputnit">Nit</label>
-                <input type="password" class="form-control" id="inputPassword4" name="nit" style="width : 300px; heigth : 300px">
-              </div>
+            
+            <div class="form-group col-md-6">
+              <label for="inputName">Nombre</label>
+              <input type="text" class="form-control" id="inputEmail4" name="Nombre"style="width : 600px; heigth : 600px">
             </div>
-            <div class="form-group">
+            
+            <div class="form-group col-md-6">
+                <label for="inputnit">Nit</label>
+                <input type="text" class="form-control" id="inputPassword4" name="nit" style="width : 200px; heigth : 200px">
+            </div>
+            
+            <div class="form-group col-md-6">
               <label for="inputDireccion">Dirección</label>
               <input type="text" class="form-control" id="inputAddress" placeholder="0 calle zona 0"style="width : 900px; heigth : 900px">
             </div>
@@ -54,9 +57,10 @@
                 </label>
               </div>
             </div>
-            
+             <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Crear</button>
         </div><br>
-            <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Crear</button>
+           
+            
           </form>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
