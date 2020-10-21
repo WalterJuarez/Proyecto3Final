@@ -52,14 +52,14 @@
               <label for="inputCantidad">Cantidad</label>
               <input type="text" class="form-control" id="inputAddress" style="width : 200px; heigth : 200px">
             </div>
-                <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Agregar</button><br/>
+                <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Agregar</button>
             </div>
             <hr color ="#ffffff">
             
             <table class="table">
         
            
-                <thead class="thead-dark"><br/>
+                <thead class="thead-dark">
                   <tr>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Producto</th>

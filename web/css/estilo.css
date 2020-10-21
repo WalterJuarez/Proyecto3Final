@@ -10,7 +10,7 @@ body{
     color: #ffffff;
 }
 #cuadro{
-    width: 330px;
+    width: 450px;
     background: #090909;
     margin: auto;
     margin-top: 120px;
@@ -19,6 +19,7 @@ body{
     border-right: 35px solid #141414;
     border-left: 35px solid #141414;
     border-radius: 6px;
+    opacity: 0,7;
 }
 
 #cuadro2{
