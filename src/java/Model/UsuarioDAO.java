@@ -4,18 +4,32 @@ package Model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class UsuarioDAO implements CRUD{
+     Connection con;
+    Conexion cn = new Conexion();
     PreparedStatement ps;
     ResultSet rs;
-    Conexion cn = new Conexion();
-    EntidadUsuario eU = new EntidadUsuario();
-    Conexion con = new Conexion();
-    Connection acceso;
     
+    public void saveCarrera(Individual clientes){
+	        try {
+                    Statement statement = Conexion.conn.createStatement();	           	
+	            String dml = "INSERT INTO Clientes(Id_Clientes, Nombre, Direccion, Tipo_Usuario, Descuentos, Nit) "
+	            		+ "   VALUES("+clientes.getId() + ",'" + clientes.getNombre() + "'" + 
+	            		",'" + clientes.getDireccion() + "'"+ ",'" + clientes.getTipoUsuario()+ "'" + ",'" + clientes.getDescuento()+ "'"+
+	            		",'" + clientes.getNit() + "')";
+	            System.out.println("dml = " + dml);
+	            statement.executeUpdate(dml);
+	        } catch (SQLException throwables) {
+	            throwables.printStackTrace();
+	        }
+	    }
+    /*
     public EntidadUsuario ValidarUsuario(String password, String user){
       String sql = "select * from Usuarios where Nombre=? and Password=?";
       try{
@@ -76,7 +90,7 @@ public class UsuarioDAO implements CRUD{
      * @param o
      * @return
      */
-    
+    /*
     public int actualizar(Object[] o){
         int r = 0;
         String sql = "update Usuarios set Nombres=?, Password=? where Id_Usuarios = ?";
@@ -96,7 +110,7 @@ public class UsuarioDAO implements CRUD{
      * 
      * @param id
      */
-    
+    /*
     public void eliminar(int id){
         String sql = "delete from Usuarios where Id_Usuarios = ?";
          try {
@@ -111,6 +125,62 @@ public class UsuarioDAO implements CRUD{
     @Override
     public List listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
+    /*
+
+    @Override
+    public List listar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
+   
+    @Override
+    public int add(Object[] o) {
+        int r = 0;
+        String sql = "insert into Clientes(Id_Clientes,Nombre,Direccion,Tipo_Usuario,Descuentos,Nit)values(?,?,?,?,?,?)";
+        try {
+            con = (Connection) Conexion.conn.createStatement();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, o[0]);
+            ps.setObject(2, o[1]);
+            ps.setObject(3, o[3]);
+            ps.setObject(4, o[4]);
+            ps.setObject(5, o[5]);
+            ps.setObject(6, o[2]);
+            r = ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return r;
+    }
+
+    @Override
+    public int actualizar(Object[] o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
+
+    @Override
+    public List listar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int add(Object[] o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int actualizar(Object[] o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -4,13 +4,32 @@ package Model;
 public class Individual extends Clientes{
     
     private String dpi;
+    private double descuento;
 
 
-    public Individual(String dpi, String nombre, String nit, String direccion, String tipoUsuario) {
+    public Individual(String nombre, String nit, String direccion, String tipoUsuario, double descuento) {
         super(nombre, nit, direccion, tipoUsuario);
-        this.dpi = dpi;
+        //this.dpi = dpi;
+        this.descuento = descuento;
 
     }
+
+    public String getDpi() {
+        return dpi;
+    }
+
+    public void setDpi(String dpi) {
+        this.dpi = dpi;
+    }
+
+    public double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+    
 
     @Override
     public int getId() {
