@@ -4,6 +4,9 @@
     Author     : 15109
 --%>
 
+<%@page import="Model.EntidadUsuario"%>
+<%@page import="Model.UsuarioDAO"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,17 +35,7 @@
               <input type="password" class="form-control" id="exampleInputPassword1" name = "password" style="width : 200px; heigth : 200px">
             </div>
             
-            <button id="Ingreso" type="submit" class="btn btn-primary" align = "center">Ingresar</button>
-            <% 
-            String codigo = request.getParameter("password");
-            String nombre = request.getParameter("usuario");
-            if(codigo==null && nombre==null){
-            %>
-            <div class="alert alert-primary" role="alert" color="#ffffff">
-                Los campos no pueden estar vacios
-            </div>
-            <%}%>        
-               
+                <a class="btn btn-primary" href="MenuPrincipal.jsp" role="button">Ingresar</a><br>
             </form>
         </div>
     </div>

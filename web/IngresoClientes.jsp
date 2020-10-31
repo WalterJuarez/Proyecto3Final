@@ -23,8 +23,10 @@
             String nombre = request.getParameter("nombre");
             String nit = request.getParameter("nit");
             String direc = request.getParameter("dire");
-            String tipo1 = request.getParameter("chbParticular") ;
-            String tipo2 = request.getParameter("chbEmpresa");
+            String tipo1 = request.getParameter("cbtipo") ;
+            double descuento2 = 0.09;
+            double descuento1 = 0.00;
+            
             if(nombre == null && nit == null){
         %>
         <div id="cuadro2">
@@ -42,7 +44,7 @@
             
             <div class="form-group col-md-6">
               <label for="inputDireccion">Dirección</label>
-              <input type="text" class="form-control" id="inputAddress" name ="dire" placeholder="0 calle zona 0"style="width : 900px; heigth : 900px">
+              <input type="text" class="form-control" id="inputAddress" name ="dire" style="width : 900px; heigth : 900px">
             </div>
             
             
@@ -50,35 +52,31 @@
             
        <div class="form-group col-md-4">
                 <label for="inputState">Tipo de Envio</label>
-                <select id="inputState" class="form-control"style="width : 200px; heigth : 200px">
+                <select id="inputState" class="form-control"name= "cbtipo" style="width : 200px; heigth : 200px">
                 <option selected>Seleccionar</option>
                 <option>Particular</option>
                 <option>Empresa</option>
                 
             </select>
             
-            <div class="form-group"><br>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                  Activo
-                </label>
-              </div>
-            </div>
+                </br>
              <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Crear</button>
         </div><br>
            
         <%
             }else{
+                
                 //1. Crear una instancia de CarreraDAO
                 UsuarioDAO usuario = new UsuarioDAO();
                 //2. Crear una instancia de Carrera
-                Individual individual = new Individual(nombre,nit,direc,"individual",0.00);
+                Individual individual = new Individual(nombre,nit,direc,tipo1,descuento1);
                 //3. Insertar en la DB la carrera
-                usuario.saveCarrera(individual);
-            }
-        
+                usuario.saveCarrera(individual);        
         %>
+            <div class="alert alert-primary" role="alert">
+              Cliente Ingresado de manera exitosa, deseas <a href="ListadoClientes.jsp" class="alert-link">ver Listado de Clientes?</a>
+            </div>
+        <%}%>
           </form>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

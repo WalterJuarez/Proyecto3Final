@@ -51,3 +51,8 @@ body{
 #granTotal{
     margin-left: auto;
 }
+
+.form{
+    display: flex;
+    padding-left: 400px;
+}

@@ -4,6 +4,8 @@
     Author     : 15109
 --%>
 
+<%@page import="Model.Producto"%>
+<%@page import="Model.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,13 @@
     </head>
     <body>
         <h1 id="titulo" align="center"class="font-weight-bold">Formulario Creacion de Productos</h1>
+        <%
+            UsuarioDAO dao = new UsuarioDAO();
+            String nombre = request.getParameter("Nombre");
+            String precio = request.getParameter("Precio");
+            String cantidad = request.getParameter("Cantidad");
+            if(nombre == null && precio == null && cantidad == null){
+        %>
         <div id="cuadro2">
         <form >
             
@@ -23,31 +32,23 @@
               <input type="text" class="form-control" id="inputEmail4" name="Nombre"style="width : 600px; heigth : 600px">
             </div>
             
+            
+            
+                
             <div class="form-group col-md-6">
-                <label for="inputnit">Precio</label>
-                <input type="double" class="form-control" id="inputPassword4" name="nit" style="width : 200px; heigth : 200px">
+                 <label for="inputName">Precio</label>
+                <input type="text" class="form-control" name ="Precio" aria-label="Dollar amount (with dot and two decimal places)" >
             </div>
             
             <div class="form-group col-md-6">
               <label for="inputDireccion">Cantidad</label>
-              <input type="Integer" class="form-control" id="inputAddress" style="width : 200px; heigth : 200px">
+              <input type="Integer" class="form-control" id="inputAddress" name = "Cantidad" style="width : 200px; heigth : 200px">
             </div>
             
             
             
             
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-            <label class="form-check-label" for="exampleRadios2">
-              Particular
-            </label>
-        </div>
-            <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios1">
-              Empresa
-            </label>
-        </div>
+        
             
             <div class="form-group"><br>
               <div class="form-check">
@@ -59,8 +60,20 @@
             </div>
              <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Crear</button>
         </div><br>
-           
+        <%
+            }else{
+              //1. Crear una instancia de CarreraDAO
+                UsuarioDAO productoDao = new UsuarioDAO();
+                //2. Crear una instancia de Carrera
+                Producto producto = new Producto(nombre,Double.parseDouble(precio),Integer.parseInt(cantidad));
+                //3. Insertar en la DB la carrera
+                productoDao.saveProducto(producto);  
             
+        %>
+            <div class="alert alert-primary" role="alert">
+              Producto Ingresado de manera exitosa, deseas <a href="ListadoProductos.jsp" class="alert-link">ver Listado de Productos?</a>
+            </div>
+        <%}%>    
           </form>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

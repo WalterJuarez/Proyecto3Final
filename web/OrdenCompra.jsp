@@ -3,7 +3,12 @@
     Created on : 20/10/2020, 07:29:31 PM
     Author     : 15109
 --%>
-
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.util.List"%>
+<%@page import="Model.Individual"%>
+<%@page import="Model.UsuarioDAO"%>
+<%@page import="Model.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +22,9 @@
         <h1 id="titulo" align="center"class="font-weight-bold">Generar Orden de Compra</h1>
          <br><a class="btn btn-primary" href="MenuPrincipal.jsp" role="button">Regresar</a>
         <div id="cuadro2">
+            <%
+                String nitoc = request.getParameter("nit");
+            %>
         <form>
             <div class="form-row">
 
@@ -35,14 +43,42 @@
             <div class="form-group col-md-6">
                 <label for="inputnit">Nit</label>
                 <input type="text" class="form-control" id="inputPassword4" name="nit" style="width : 200px; heigth : 200px">
+                <a class="btn btn-primary" type="submit" name="btcliente"href="OrdenCompra.jsp">validar
+                    <table>
+                <%     
+              
+              //1. Crear una instancia DAO correpondiente a las carreras
+              UsuarioDAO buscadoDao = new UsuarioDAO();
+              //2. Obtener todas las carreras de la base de datos
+              List<Individual> buscados = buscadoDao.getBDBBuscarClientes(nitoc);
+              //3. Iterar todas las carreras
+              
+              for( Individual buscado : buscados){
+              //4. Pintar el HTML que correponde a cada carrera
+              
+              %>
+              <tr>
+                  <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nit</th>
+                    <th scope="col">Nombre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                <td id ="titulo"><%=buscado.getNit()%></td>
+                <td id ="titulo"><%=buscado.getNombre()%></td>
+                
+                
+              </tr>
+              <% }//cierre 2do for %>
+                </table>
+                
+             </a>
             </div>
             
-            <div class="form-group col-md-6">
-              <label for="inputName">Nombre</label>
-              <input type="text" class="form-control" id="inputEmail4" name="Nombre"style="width : 500px; heigth : 500px">
-            </div>
             </div> 
-            <hr color = "#ffffff">
+            <hr>
             <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputIdProducto">Id_Producto</label>
@@ -55,7 +91,18 @@
                 <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Agregar</button>
             </div>
             <hr color ="#ffffff">
-            
+            <table class="table">
+        
+           
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nit</th>
+                    <th scope="col">Nombre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+              
             <table class="table">
         
            
@@ -110,7 +157,10 @@
             
             <div class="form-group col-md-6">
              <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Guardar</button>
+            
+            
              <button type="submit" class="btn btn-primary"style="width : 100px; heigth : 100px">Eliminar</button>
+             
             </div>
             
         </div><br>

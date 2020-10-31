@@ -3,26 +3,20 @@ package Model;
 
 public class EntidadUsuario {
     
-    int id;
+    
     String user;
     String password;
 
     public EntidadUsuario() {
     }
 
-    public EntidadUsuario(int id, String user, String password) {
-        this.id = id;
+    public EntidadUsuario(String user, String password) {
+        
         this.user = user;
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUser() {
         return user;
